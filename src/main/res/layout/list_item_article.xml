@@ -2,24 +2,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
     android:clickable="true"
     android:focusable="true"
+    app:cardElevation="8dp"
     android:foreground="?selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
         android:orientation="vertical">
 
-        <!--suppress AndroidLintContentDescription -->
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
             android:background="@color/ImageBackgroundColor" />
 
         <TextView
@@ -28,12 +31,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
-            android:paddingTop="16dp"
+            android:paddingTop="8dp"
             android:paddingRight="16dp"
-            android:paddingBottom="4dp"
-            android:textColor="@color/accentTextColor"
+            android:paddingBottom="8dp"
+            android:textColor="@color/accentColor"
             android:ellipsize="end"
-            android:maxLines="4" />
+            android:singleLine="true"
+            android:fontFamily="sans-serif-black"
+            tools:text="TITLE"
+            android:textSize="20sp"
+            android:maxLines="1" />
 
         <TextView
             android:id="@+id/article_subtitle"
@@ -43,8 +50,10 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingBottom="16dp"
-            android:textColor="#6000"
+            android:textColor="@color/accentTextColor"
             android:maxLines="1"
+            tools:text="Algo"
+            android:fontFamily="sans-serif"
             android:singleLine="true"
             android:ellipsize="end" />
     </LinearLayout>
