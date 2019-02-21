@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ShareCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.text.Html;
 import android.text.format.DateUtils;
@@ -101,6 +102,10 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mAppBar = (Toolbar) mRootView.findViewById(R.id.app_bar);
+        Intent intent = getActivity().getIntent();
+        if (intent.hasExtra(ArticleListActivity.TRANSACTION_NAME)) {
+            mPhotoView.setTransitionName(intent.getStringExtra(ArticleListActivity.TRANSACTION_NAME));
+        }
 
         mAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,7 +128,6 @@ public class ArticleDetailFragment extends Fragment implements
         bindViews();
         return mRootView;
     }
-
 
 
     static float progress(float v, float min, float max) {
@@ -213,6 +217,8 @@ public class ArticleDetailFragment extends Fragment implements
         }
 
         bindViews();
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.supportStartPostponedEnterTransition();
     }
 
     @Override
